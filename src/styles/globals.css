@@ -1,0 +1,310 @@
+/* Global styles and advanced animations */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* Root variables for consistent theming */
+:root {
+  --cyber-blue: #00ffff;
+  --cyber-pink: #ff00ff;
+  --cyber-green: #00ff00;
+  --cyber-orange: #ff8800;
+  --cyber-purple: #8800ff;
+  --cyber-red: #ff0040;
+  --cyber-yellow: #ffff00;
+  --cyber-dark: #0a0a0a;
+  --cyber-darker: #050505;
+  --cyber-gray: #1a1a1a;
+  
+  --glow-size: 20px;
+  --border-width: 2px;
+  --animation-speed: 0.3s;
+}
+
+/* Advanced glow effects */
+.advanced-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.advanced-glow::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--cyber-blue), var(--cyber-pink), var(--cyber-green), var(--cyber-orange));
+  border-radius: inherit;
+  z-index: -1;
+  animation: rotate 4s linear infinite;
+}
+
+.advanced-glow::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: var(--cyber-darker);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Holographic effect */
+.holographic {
+  position: relative;
+  background: linear-gradient(45deg, 
+    rgba(0,255,255,0.1), 
+    rgba(255,0,255,0.1), 
+    rgba(0,255,0,0.1),
+    rgba(255,255,0,0.1)
+  );
+  background-size: 400% 400%;
+  animation: hologram 4s ease infinite;
+}
+
+@keyframes hologram {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Data stream effect */
+.data-stream {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.data-stream::before {
+  content: '01001000 01100101 01101100 01101100 01101111 00100000 01010111 01101111 01110010 01101100 01100100';
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  color: rgba(0,255,0,0.1);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  white-space: pre;
+  line-height: 20px;
+  animation: dataFlow 20s linear infinite;
+}
+
+/* Matrix-style falling characters */
+.matrix-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.matrix-char {
+  position: absolute;
+  color: #00ff00;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  opacity: 0.7;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Terminal cursor */
+.terminal-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background: #00ff00;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Advanced button effects */
+.cyber-btn-advanced {
+  position: relative;
+  padding: 12px 24px;
+  background: transparent;
+  border: 2px solid var(--cyber-blue);
+  color: var(--cyber-blue);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all var(--animation-speed) ease;
+  overflow: hidden;
+}
+
+.cyber-btn-advanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--cyber-blue), transparent);
+  transition: left 0.5s ease;
+}
+
+.cyber-btn-advanced:hover::before {
+  left: 100%;
+}
+
+.cyber-btn-advanced:hover {
+  box-shadow: 0 0 30px var(--cyber-blue);
+  text-shadow: 0 0 10px var(--cyber-blue);
+  transform: translateY(-2px);
+}
+
+/* Responsive grid system */
+.cyber-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .cyber-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cyber-grid {
+    gap: 10px;
+  }
+  
+  .cyber-btn-advanced {
+    padding: 10px 20px;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+}
+
+/* Loading animations */
+.cyber-loading {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: var(--cyber-blue);
+  animation: spin 1s ease-in-out infinite;
+}
+
+.cyber-loading-dots {
+  display: inline-block;
+}
+
+.cyber-loading-dots::after {
+  content: '...';
+  animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: ''; }
+  40% { content: '.'; }
+  60% { content: '..'; }
+  80%, 100% { content: '...'; }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --cyber-blue: #ffffff;
+    --cyber-pink: #ffffff;
+    --cyber-green: #ffffff;
+    --cyber-orange: #ffffff;
+  }
+  
+  .cyber-card {
+    border-color: #ffffff;
+    background: #000000;
+  }
+}
+
+/* Print styles */
+@media print {
+  .matrix-rain,
+  .data-stream,
+  .advanced-glow::before,
+  .holographic {
+    display: none !important;
+  }
+  
+  .cyber-card {
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+}
+
+/* Selection styles */
+::selection {
+  background: rgba(0,255,255,0.3);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: rgba(0,255,255,0.3);
+  color: #ffffff;
+}
+
+/* Focus management */
+.focus-visible {
+  outline: 2px solid var(--cyber-blue);
+  outline-offset: 2px;
+}
+
+/* Custom properties for dynamic theming */
+.theme-blue { --primary-color: var(--cyber-blue); }
+.theme-pink { --primary-color: var(--cyber-pink); }
+.theme-green { --primary-color: var(--cyber-green); }
+.theme-orange { --primary-color: var(--cyber-orange); }
+
+/* Performance optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.contain-layout {
+  contain: layout style paint;
+}

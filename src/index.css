@@ -1,0 +1,230 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  body {
+    font-family: 'Orbitron', sans-serif;
+    background: #050505;
+    color: #00ffff;
+    line-height: 1.5;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #00ffff;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #00ffff;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00ccff;
+  }
+}
+
+@layer components {
+  .cyber-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .cyber-card {
+    @apply bg-cyber-dark/50 backdrop-blur-sm border border-cyber-blue/30 rounded-lg p-6;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  }
+  
+  .cyber-button {
+    @apply px-6 py-3 bg-transparent border-2 border-cyber-blue text-cyber-blue font-cyber font-bold rounded-lg;
+    @apply hover:bg-cyber-blue hover:text-cyber-dark transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-cyber-blue focus:ring-opacity-50;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  }
+  
+  .cyber-button:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  }
+  
+  .cyber-input {
+    @apply w-full px-4 py-3 bg-cyber-gray/50 border border-cyber-blue/50 rounded-lg;
+    @apply text-cyber-blue placeholder-cyber-blue/50 font-mono;
+    @apply focus:border-cyber-blue focus:outline-none focus:ring-2 focus:ring-cyber-blue/50;
+    @apply backdrop-blur-sm;
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+  }
+  
+  .matrix-bg {
+    background-image: 
+      linear-gradient(rgba(0,255,0,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,0,0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .scanlines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      transparent 50%,
+      rgba(0, 255, 255, 0.03) 50%,
+      rgba(0, 255, 255, 0.03) 51%,
+      transparent 51%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    animation: scan 0.1s linear infinite;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+  
+  .border-glow {
+    box-shadow: 0 0 10px currentColor;
+  }
+  
+  .bg-glow {
+    box-shadow: inset 0 0 20px rgba(0, 255, 255, 0.1);
+  }
+}
+
+/* Cyber glitch effect */
+.glitch {
+  position: relative;
+  color: #00ffff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  animation: glitch-1 0.5s infinite;
+  color: #ff00ff;
+  z-index: -1;
+}
+
+.glitch::after {
+  animation: glitch-2 0.5s infinite;
+  color: #ffff00;
+  z-index: -2;
+}
+
+@keyframes glitch-1 {
+  0%, 14%, 15%, 49%, 50%, 99%, 100% {
+    transform: translate(0);
+  }
+  15%, 49% {
+    transform: translate(-2px, 2px);
+  }
+}
+
+@keyframes glitch-2 {
+  0%, 20%, 21%, 62%, 63%, 99%, 100% {
+    transform: translate(0);
+  }
+  21%, 62% {
+    transform: translate(2px, -1px);
+  }
+}
+
+/* Terminal effect */
+.terminal {
+  font-family: 'JetBrains Mono', monospace;
+  background: #000;
+  color: #00ff00;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 79px,
+    rgba(255, 255, 255, 0.03) 81px,
+    rgba(255, 255, 255, 0.03) 82px,
+    transparent 84px
+  );
+  pointer-events: none;
+}
+
+/* Custom animations for data flow */
+@keyframes dataFlow {
+  0% { transform: translateY(-100px) translateX(-50px); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh) translateX(50px); opacity: 0; }
+}
+
+.data-particle {
+  position: fixed;
+  width: 2px;
+  height: 10px;
+  background: linear-gradient(to bottom, transparent, #00ffff, transparent);
+  animation: dataFlow 3s linear infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cyber-button {
+    @apply px-4 py-2 text-sm;
+  }
+  
+  .cyber-card {
+    @apply p-4;
+  }
+  
+  .glitch {
+    font-size: 1.5rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .cyber-card, .cyber-button {
+    box-shadow: none !important;
+    border: 1px solid #333 !important;
+  }
+}
