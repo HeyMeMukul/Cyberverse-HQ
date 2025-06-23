@@ -26,7 +26,6 @@ const Footer = () => {
               3D cybersecurity learning platform with interactive tools and gamified education.
             </p>
             
-            {/* Contact Links */}
             
           </div>
 
