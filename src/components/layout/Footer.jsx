@@ -27,10 +27,7 @@ const Footer = () => {
             </p>
             
             {/* Contact Links */}
-            <div className="flex space-x-3">
-              <SocialLink href="https://github.com" icon={<Github className="w-4 h-4" />} label="GitHub" />
-              <SocialLink href="mailto:contact@cyberverse.hq" icon={<Mail className="w-4 h-4" />} label="Email" />
-            </div>
+            
           </div>
 
           {/* Navigation Links */}
