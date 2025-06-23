@@ -21,21 +21,12 @@ Cyberverse HQ is an immersive, 3D cyberpunk-themed cybersecurity learning platfo
 - Learning paths for different cybersecurity specializations
 - Capture The Flag (CTF) training challenges
 
-### 🎮 Gamification System
-- XP and level progression
-- Skill tracking across multiple domains
-- Achievement badges for completing challenges
-- Progress visualization for each knowledge area
-
 ## Buildings & Learning Areas
 
 - **Arsenal Vault** - Explore 500+ cybersecurity tools
 - **Linux Command Center** - Master 200+ Linux commands
 - **Bug Bounty Dojo** - Learn web vulnerabilities and exploitation
 - **Learning Terminal** - Follow structured learning paths
-- **CTF Arena** - Practice with hacking challenges
-- **Wordlist Library** - Discover security testing wordlists
-- **Breach Database** - Study historic data breaches
 - **Career Station** - Analyze skills and find security jobs
 
 ## Getting Started
